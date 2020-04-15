@@ -1,0 +1,2 @@
+# LeeCode
+Self LeeCode practice
