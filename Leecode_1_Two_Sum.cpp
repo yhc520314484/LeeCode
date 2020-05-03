@@ -55,3 +55,28 @@ public:
         return res;
     }
 };
+
+/*
+    Best Solution
+    One time Hash map
+    Source: LeeCode
+    Author: zrita
+    Url: https://leetcode-cn.com/problems/two-sum/solution/c-san-chong-fang-fa-jian-dan-yi-dong-ji-bai-100-z-/
+*/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        unordered_map<int,int> m;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(m.find(target-nums[i]) != m.end())      //m中存在对应的键值
+                return {m[target-nums[i]] , i};        //m[target-nums[i]]为已经加入map的元素的索引，所以小于本轮循环中的i，放在前面
+
+            m[nums[i]]=i;       //向map中添加元素
+        }
+        return {};
+    }
+};
