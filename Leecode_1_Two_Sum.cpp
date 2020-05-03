@@ -1,7 +1,7 @@
 /* 
    Leecode 1 Two sum
 
-   The first time to use Leecode
+   The first time to use Leetcode
    Author: JackWilliam
    Date: 3, May, 2020
 */
@@ -59,23 +59,41 @@ public:
 /*
     Best Solution
     One time Hash map
-    Source: LeeCode
+    Key Point:使用了unordered_map以实现哈希表
+    Source: LeetCode
     Author: zrita
     Url: https://leetcode-cn.com/problems/two-sum/solution/c-san-chong-fang-fa-jian-dan-yi-dong-ji-bai-100-z-/
+    12ms  8MB
 */
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
 
+        /*
+            unordered_map内部实现了一个哈希表（也叫散列表，
+            通过把关键码值映射到Hash表中一个位置来访问记录，查找的时间复杂度可达到O(1)，
+            其在海量数据处理中有着广泛应用）。因此，其元素的排列顺序是无序的  
+
+            对于查找问题，unordered_map会更加高效一些，
+            因此遇到查找问题，常会考虑一下用unordered_map    
+
+            unordered_map<Key,Value>   键值对
+        */
+
         unordered_map<int,int> m;
         
-        for(int i=0;i<nums.size();i++)
+        for(int i = 0; i < nums.size(); i++)
         {
-            if(m.find(target-nums[i]) != m.end())      //m中存在对应的键值
-                return {m[target-nums[i]] , i};        //m[target-nums[i]]为已经加入map的元素的索引，所以小于本轮循环中的i，放在前面
-
-            m[nums[i]]=i;       //向map中添加元素
+            //m中存在对应的键值
+            if(m.find(target-nums[i]) != m.end())      
+                //m[target-nums[i]]为已经加入map的元素的索引，所以小于本轮循环中的i，放在前面
+                //{}通过该符号直接返回vector
+                //target-nums[i]是一个Hash Key，坐标i是Value
+                return {m[target-nums[i]] , i};        
+            
+            //向map中添加元素
+            m[nums[i]] = i;       
         }
         return {};
     }
