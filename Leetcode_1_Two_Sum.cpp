@@ -1,5 +1,5 @@
 /* 
-   Leecode 1 Two sum
+   Leecode 1 Two Sum
 
    The first time to use Leetcode
    Author: JackWilliam
