@@ -1,6 +1,6 @@
 /* 
    Leecode 7 Reverse Integer
-
+   Level: Simple
 
    Author: JackWilliam
    Date: 4, May, 2020

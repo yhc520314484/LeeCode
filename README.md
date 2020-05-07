@@ -1,2 +1,2 @@
 # LeeCode
-Self LeeCode practice
+Self LeetCode practice

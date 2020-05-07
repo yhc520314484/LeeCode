@@ -1,5 +1,6 @@
 /* 
    Leecode 1 Two Sum
+   Level: Simple
 
    The first time to use Leetcode
    Author: JackWilliam
@@ -11,6 +12,8 @@
     Bruce Force
     1836ms  7.1MB
 */
+
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {   
