@@ -50,7 +50,7 @@ public:
     同理，N个字符串的前缀一定是其中（N-1）个字符串的最长公共前缀与第N个字符串的最长公共前缀
 
     Source: LeetCode
-    Author: 作者：QQqun902025048
+    Author: QQqun902025048
     Url: https://leetcode-cn.com/problems/longest-common-prefix/solution/8-xing-c-shun-xu-bi-jiao-by-qqqun902025048/
 */
 class Solution {
