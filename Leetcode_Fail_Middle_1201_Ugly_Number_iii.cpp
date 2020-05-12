@@ -75,7 +75,7 @@ public:
     LL Binary_Search(LL low,LL high,int a,int b,int c,LL n){
         if(low >= high) return low;
 
-        LL mid = (low + high)>>1;
+        LL mid = (low + high)>>1;  //其位权是以2为底的幂。例如二进制数据110.11,逢2进1。因此右移一位相当于除2
 
         LL MCM_a_b = MCM(a,b);
         LL MCM_a_c = MCM(a,c);
