@@ -2,9 +2,7 @@
    Leecode 1201 Ugly_Number_iii (超时)
    Level: Middle
 
-   Author: 参考CSDN“lang的飞起”所给出的题解后完成
-   Source: https://blog.csdn.net/qq_31726419/article/details/78204207
-   Date: 11, May, 2020
+   Date: 12, May, 2020
 */
 
 /*
