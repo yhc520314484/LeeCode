@@ -38,12 +38,27 @@ void dfs(int step)
         }
 }   
 */
-
+/*
+bool dfs(mask,re){  // 剪枝回溯
+    if(re的元素个数为m_i个) 
+        得到m_i个元素需要判断的最高位num
+        判断是否满足条件 // m_i为上面的m_0,m_1,...
+    for(int i = 0;i<=9;i++){
+        if(当前元素已经使用) continue;
+        更新mask
+        更新re
+        dfs(mask,re)
+        回溯更新mask
+        回溯更新re
+    }
+    return false;
+}
+*/
 /*
     Solution
     Key Point:分析清楚剪枝与回溯的条件
 
-    Pending： 未能理解效果
+    Pending： 未完全理解效果  mask是什么 当前选定值？  tt又是什么
 
     Source: LeetCode
     Author: xyqkoala
@@ -68,13 +83,14 @@ public:
             if(tts!=ts) return 0;
         }
         if((num+1)==result.size() && add == 0) return 2;	// 生成完成且条件满足
-        return 1;	// 条件满足，但未生成完毕
+        return 1;	// 条件满足，但未生成完毕 即还未生成到最高位？
     }
     bool dfs(int &mask,int &n,vector<int> &re,vector<string> &words,string &result,unordered_map<char,int> &t,unordered_map<int,int> & tt){
-        if(tt.find(re.size()) != tt.end()){ // 一个新的高位产生
+        //mask 当前选定值？
+        if(tt.find(re.size()) != tt.end()){ // 一个新的高位产生 if(re的元素个数为m_i个) 
 
-            int num = tt[re.size()];
-            int tre = check(num,re,words,result,t);
+            int num = tt[re.size()];    //得到m_i个元素需要判断的最高位num
+            int tre = check(num,re,words,result,t);  //判断是否满足条件 // m_i为上面的m_0,m_1,...
             // 前num个数字的排列不合适，剪枝
             if(tre == 0) return false;
             // 前num个数的排列合适，而且已经生成了所有数
@@ -92,7 +108,8 @@ public:
         return false;
     }
     bool isSolvable(vector<string>& words, string result) {
-        unordered_map<char,int> t;
+        unordered_map<char,int> t;// 未知数的字母与排列的下标的映射
+            // 即例如字母，[E,D,F,...]对应的值为[re[0],re[1],re[2],...](re为生成的排列)
         unordered_map<int,int> tt;
         int idx = 0;
         reverse(result.begin(),result.end());
@@ -100,6 +117,7 @@ public:
         for(auto &str:words){
             reverse(str.begin(),str.end());
         }
+        //相当于在找result和str中有多少个不一样的字母，并为其标号为idx，idx唯一对应一个字母
         for(int i = 0;i<n;i++){
             if(t.find(result[i]) == t.end()) t[result[i]] = idx++;
             for(auto &str:words){
@@ -107,10 +125,10 @@ public:
                 if(i>=tn) continue;
                 if(t.find(str[i]) == t.end()) t[str[i]] = idx++;
             }
-            tt[idx] = i;
+            tt[idx] = i; // 即,有idx个未知数时，需要重新判断第i位
         }
         int mask = 0;
-        vector<int> re;
+        vector<int> re;  //re为生成的排列
         return dfs(mask,idx,re,words,result,t,tt);
     }
 };
