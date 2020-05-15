@@ -1,5 +1,5 @@
 /* 
-   Leecode 17 Remove element
+   Leecode 27 Remove element
    Level: Simple
 
    Author: JackWilliam
@@ -15,12 +15,29 @@
 
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
-        int old = INT_MIN;
-        for(auto it = nums.begin(); it != nums.end();){
-            if(*it == old) it = nums.erase(it);
-            else { old = *it; it++;}
+    int removeElement(vector<int>& nums, int val) {
+        for(auto it = nums.begin(); it != nums.end(); ){
+            if(*it == val) it = nums.erase(it);
+            else it++;
         }
         return nums.size();
+    }
+};
+
+/*
+    Other Solution
+    Key Point:双指针法
+
+    12ms  7.5MB
+*/
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int num_len= nums.size();
+        int i = 0;
+        for(int j = 0; j < num_len; j++){
+            if(nums[j] != val) {nums[i] = nums[j]; i++;}
+        }
+        return i;
     }
 };

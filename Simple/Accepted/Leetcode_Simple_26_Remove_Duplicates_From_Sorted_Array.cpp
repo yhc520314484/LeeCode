@@ -1,5 +1,5 @@
 /* 
-   Leecode 500 Keyboard Row
+   Leecode 26 Remove Duplicates From Sorted Array
    Level: Simple
 
    Author: JackWilliam
