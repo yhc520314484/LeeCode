@@ -9,7 +9,7 @@
 /*
     Version 0.1   
        注意头插迭代器使用
-    4ms  6.9MB
+    4ms  6.7MB
 */
 
 class Solution {
