@@ -78,7 +78,7 @@ public:
 
 /*
     Solution
-    Key Point: 使用unordered_map
+    Key Point: 使用unordered_map，但不满足空间复杂度限制，需要O(n)的额外空间
 
 
     Source: LeetCode
@@ -102,6 +102,28 @@ public:
     }
 };
 
+/*
+    Solution
+    Key Point: 利用异或的性质完成，时间复杂度O(n)，空间复杂度O(1)
+               把元素全部进行异或处理后，最后剩下的数就是只出现一次的数字
+    异或的性质：
+    1.任何数和0做异或运算，结果仍然是原来的数
+    2.任何数和其自身做异或运算，结果是0
+    3.异或运算满足交换律和结合律
+
+
+    Source: LeetCode
+    Author: LeetCode-Solution
+    Url: https://leetcode-cn.com/problems/single-number/solution/zhi-chu-xian-yi-ci-de-shu-zi-by-leetcode-solution/
+*/
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ret = 0;
+        for (auto e: nums) ret ^= e;
+        return ret;
+    }
+};
 
 int main(){
     vector<int> exps {4,1,2,1,2};
