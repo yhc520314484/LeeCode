@@ -72,24 +72,25 @@ public:
     时间复杂度 O(N)   空间复杂度O(N)
     16ms   17Mb
     Source: LeetCode
-    Author: Gary_coding
-    Url: https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/c-zhong-gui-zhong-ju-de-8msjie-fa-dfsbfs-shi-jia-2/
+    Author: wallcwr
+    Url: https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/bfshe-dfsjie-jue-er-cha-shu-zui-da-shen-du-wen-ti-/
 */
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        queue<TreeNode*> q;
-        int ans = 0;
-        if (root != nullptr) q.push(root);
-        while (!q.empty()) {
-            for (int i = q.size() - 1; i >= 0; --i) {
-                TreeNode* cur = q.front();
-                q.pop();
-                if (cur->left) q.push(cur->left);
-                if (cur->right) q.push(cur->right);
+        int max_dept = 0;
+        queue<pair<TreeNode*,int> >q;
+        q.push({root, 1});
+        while(!q.empty()) {
+            TreeNode* curr_node = q.front().first;
+            int curr_dept = q.front().second;
+            q.pop();
+            if(curr_node) {
+                max_dept =  max(curr_dept, max_dept);
+                q.push({curr_node->left, curr_dept+1});
+                q.push({curr_node->right, curr_dept+1});
             }
-            ++ans;
         }
-        return ans;
+        return max_dept;
     }
 };
